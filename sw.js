@@ -25,15 +25,19 @@ const APP_SHELL_INMUTABLE = [
     'js/libs/jquery.js'
 ]
 
-self.addEventListener('install', event => {
+self.addEventListener('install', e => {
     const cacheStatic = caches.open(STATIC_CACHE).then(cache =>
-        cache.addAll(APP_SHELL)
+        cache.addAll(APP_SHELL).catch(err => {
+            console.error('fallo en cacheStatic:', err)
+        })
     )
 
     const cacheInmutable = caches.open(INMUTABLE_CACHE).then(cache =>
-        cache.addAll(APP_SHELL_INMUTABLE)
+        cache.addAll(APP_SHELL_INMUTABLE).catch(err => {
+            console.error('fallo en cacheInmutable:', err)
+        })
     )
-    event.waitUntil(Promise.all([cacheStatic, cacheInmutable]))
+    e.waitUntil(Promise.all([cacheStatic, cacheInmutable]))
 })
 
 self.addEventListener('activate', e => {
