@@ -7,15 +7,15 @@ const INMUTABLE_CACHE = 'inmutable-v1'
 
 const APP_SHELL = [
     //'./',
-    './index.html',
-    './css/style.css',
-    './img/favicon.ico',
-    './img/avatars/hulk.jpg',
-    './img/avatars/ironman.jpg',
-    './img/avatars/spiderman.jpg',
-    './img/avatars/thor.jpg',
-    './img/avatars/wolverine.jpg',
-    './js/app.js'
+    'index.html',
+    'css/style.css',
+    'img/favicon.ico',
+    'img/avatars/hulk.jpg',
+    'img/avatars/ironman.jpg',
+    'img/avatars/spiderman.jpg',
+    'img/avatars/thor.jpg',
+    'img/avatars/wolverine.jpg',
+    'js/app.js'
 ]
 
 const APP_SHELL_INMUTABLE = [
@@ -37,6 +37,7 @@ self.addEventListener('install', e => {
             console.error('fallo en cacheInmutable:', err)
         })
     )
+
     e.waitUntil(Promise.all([cacheStatic, cacheInmutable]))
 })
 
