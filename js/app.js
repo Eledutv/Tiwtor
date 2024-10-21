@@ -1,6 +1,7 @@
 let url = window.location.href
 let swLocation = "Tiwtor_vengadores/sw.js"
 if (navigator.serviceWorker) {
+    console.log("AHAHHAHA")
     if (url.includes.apply('localhost') || url.includes('127.0.0.1')) {
         swLocation = '/sw.js'
     }
