@@ -4,9 +4,6 @@ if (navigator.serviceWorker) {
     if (url.includes.apply('localhost') || url.includes('127.0.0.1')) {
         swLocation = '/sw.js'
     }
-    else {
-        console.log("AHAHHAHA")
-    }
     navigator.serviceWorker.register(swLocation)
 }
 
