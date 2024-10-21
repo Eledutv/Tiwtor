@@ -31,13 +31,13 @@ self.addEventListener('install', event => {
     )
 
     const cacheInmutable = caches.open(INMUTABLE_CACHE).then(cache =>
-        cache.addAll(APP_SHELL)
+        cache.addAll(APP_SHELL_INMUTABLE)
     )
     event.waitUntil(Promise.all([cacheStatic, cacheInmutable]))
 })
 
 self.addEventListener('activate', e => {
-    const respuesta = cache.keys().then(keys => {
+    const respuesta = caches.keys().then(keys => {
         keys.foreach(key => {
             if (key != STATIC_CACHE && key.includes('static')) {
                 return caches.delete(key)
